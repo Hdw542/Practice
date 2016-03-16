@@ -40,6 +40,28 @@ namespace OverloadingandOverridingFunctionPractice
             calc.height = c1.height + c2.height;
             return calc;
         }
+
+        // extending program using comparisons 
+        public static bool operator== (secondClass left, secondClass right)
+        {
+            bool currentStatus = false;
+            if (left.length == right.length && left.bredth == right.bredth && left.height == right.height)
+            {
+                return currentStatus = true;
+            }
+            return currentStatus;
+        }
+        // program throws error if only above == operator used so we need != operator to also be defined
+        public static bool operator!= (secondClass left, secondClass right)
+        {
+            bool currentStatus = false;
+            if (left.length != right.length && left.bredth != right.bredth && left.height != right.height)
+            {
+                return currentStatus = true;
+            }
+            return currentStatus;
+        }
+
     };
 
     class Program 
@@ -70,8 +92,8 @@ namespace OverloadingandOverridingFunctionPractice
             Console.Out.WriteLine("Result Volume 1 = " + volume);
 
             // setting length, bredth and height for 2nd output
-            get2.setLength(20);
-            get2.setBredth(4);
+            get2.setLength(10);
+            get2.setBredth(2);
             get2.setHeight(2);
             // getting volume for 2nd
             volume = get2.volume();
@@ -88,6 +110,25 @@ namespace OverloadingandOverridingFunctionPractice
             // printing volume for 2nd
             Console.Out.WriteLine("Expected output = 120");
             Console.Out.WriteLine("Result Volume 3 = " + volume);
+
+
+            // for comparison return
+            if (get1 == get2)
+            {
+                Console.Out.WriteLine("L,B,H OF 1 is equal to 2");
+            }
+            else if (get1 == get3)
+            {
+                Console.Out.WriteLine("L,B,H OF 1 is equal to 3");
+            }
+            else if (get2 == get3)
+            {
+                Console.Out.WriteLine("L,B,H OF 2 is equal to 3");
+            }
+            else
+            {
+                Console.Out.WriteLine("None equal");
+            }
 
             Console.ReadLine();
         }
